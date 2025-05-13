@@ -1,19 +1,14 @@
 import { ButtonProps, ButtonVariant } from "@/types";
 import Image from "next/image";
 
-const Button: React.FC<ButtonProps> = ({
-  label,
+const IconButton: React.FC<ButtonProps> = ({
   disabled = false,
   variant = "black",
-  icon,
-  iconPosition = "left",
+  icon = "",
   onClick,
-  styleClass = "",
-  type = "button",
 }) => {
   const baseStyle =
-    "flex items-center h-[36px] px-4 py-2 rounded-md gap-2 transition cursor-pointer " +
-    styleClass;
+    "flex items-center h-[36px] p-2 rounded-md gap-2 transition cursor-pointer";
 
   const enabledStyles: Record<ButtonVariant, string> = {
     black: "bg-[#1A1A1A] text-white hover:bg-[#262626]",
@@ -35,26 +30,17 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`${baseStyle} ${variantStyle}`}
     >
       <div className="flex justify-between items-center">
-        {icon && iconPosition === "left" && (
-          <div className="w-4 h-4 mr-2">
-            <Image src={icon} alt="icon" width={16} height={16} />
-          </div>
-        )}
-        <div>{label}</div>
-        {icon && iconPosition === "right" && (
-          <div className="w-4 h-4 mr-2">
-            <Image src={icon} alt="icon" width={16} height={16} />
-          </div>
-        )}
+        <div className="w-4 h-4">
+          <Image src={icon} alt="icon" width={16} height={16} />
+        </div>
       </div>
     </button>
   );
 };
 
-export default Button;
+export default IconButton;

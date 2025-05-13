@@ -5,9 +5,11 @@ import Button from "@/components/buttonComponent";
 import SearchInput from "@/components/searchComponent";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function SurveyHome() {
   const [type, setType] = useState("gallery");
+  const router = useRouter();
 
   const changeType = (type: string) => {
     setType(type);
@@ -17,11 +19,15 @@ export default function SurveyHome() {
     <div>
       <div
         className={
-          "flex justify-between w-full h-[60px] border-b-1 py-[12px] px-[20px] md:px-[90px] lg:px-[74px] xl:px-[132px]"
+          "flex justify-between w-full h-[60px] border-b-1 border-[#CACACA] py-[12px] px-[20px] md:px-[90px] lg:px-[74px] xl:px-[132px]"
         }
       >
         <div>My Space</div>
-        <Button label="Create Survey" icon={"/icons/plus_icon.svg"} />
+        <Button
+          label="Create Survey"
+          icon={"/icons/plus_icon.svg"}
+          onClick={() => router.push("/surveys/new")}
+        />
       </div>
       <div className="flex flex-col px-[20px] md:px-[90px] lg:px-[74px] xl:px-[132px]">
         <div className="flex justify-between items-start my-[25px]">

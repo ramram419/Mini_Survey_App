@@ -1,6 +1,10 @@
+import { SearchProps } from "@/types";
 import Image from "next/image";
 
-const SearchInput = ({ disabled = false, error = false }) => {
+const SearchInput: React.FC<SearchProps> = ({
+  disabled = false,
+  error = false,
+}) => {
   const baseStyle =
     "flex items-center w-[279px] h-[40px] border-1 border-[#E5E5E5] rounded-lg px-[12px] py-[8px] ";
   const enabledStyle =
