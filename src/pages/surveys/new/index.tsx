@@ -4,10 +4,12 @@ import IconButton from "@/components/iconButtonComponent";
 import TextField from "@/components/inputComponent";
 import QuestionItem from "@/components/questionComponent";
 import { useSurveyStore } from "@/store/useServeyStore";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 export default function NewSurvey() {
+  const router = useRouter();
   const methods = useForm();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,7 +32,11 @@ export default function NewSurvey() {
             }
           >
             <div className="flex flex-row items-center">
-              <IconButton icon="/icons/arrow_backward.svg" variant="white" />
+              <IconButton
+                icon="/icons/arrow_backward.svg"
+                variant="white"
+                onClick={() => router.push("/surveys")}
+              />
               <div className="text-[#B5B5B5] text-base mx-2">내 설문</div>
               <div className="text-base mr-2">/</div>
               <div>
